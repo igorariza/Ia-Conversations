@@ -1,0 +1,13 @@
+FastAPI
+Flask
+spaCy
+nltk
+scikit-learn
+transformers
+torch
+pandas
+numpy
+redis
+uvicorn
+pytest
+textblob
