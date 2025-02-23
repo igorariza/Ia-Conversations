@@ -55,6 +55,9 @@ chat-nlp-microservice
 To run the microservice, execute the following command:
 
 ```
+python src/main.py
+```
+```
 uvicorn src.main:app --reload
 ```
 

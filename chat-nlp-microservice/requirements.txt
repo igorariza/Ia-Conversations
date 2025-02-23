@@ -6,8 +6,9 @@ scikit-learn
 transformers
 torch
 pandas
-numpy
+numpy<2
 redis
 uvicorn
 pytest
 textblob
+openai
