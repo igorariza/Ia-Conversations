@@ -3,6 +3,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
+from typing import List, Dict
 
 nltk.download('stopwords')
 
@@ -17,8 +18,8 @@ def preprocess_text(messages):
     
     return processed_messages
 
-def extract_topics(messages, num_topics=3, num_words=5):
-    processed_messages = preprocess_text([msg['text'] for msg in messages])
+def extract_topics(messages: List[str], num_topics=3, num_words=5) -> List[str]:
+    processed_messages = preprocess_text(messages)
     
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform(processed_messages)
