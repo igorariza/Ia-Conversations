@@ -55,6 +55,20 @@ chat-nlp-microservice
 To run the microservice, execute the following command:
 
 ```
+# Add these lines to your ~/.zshrc
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Reload the shell configuration
+source ~/.zshrc
+
+# Activate the virtual environment
+pyenv activate myenv
+
+
 python src/main.py
 ```
 ```
