@@ -11,4 +11,4 @@ redis
 uvicorn
 pytest
 textblob
-openai
+openai==1.0.0
