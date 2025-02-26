@@ -11,4 +11,5 @@ redis
 uvicorn
 pytest
 textblob
-openai==1.0.0
+openai==0.28.0
+dotenv

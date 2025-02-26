@@ -1,35 +1,41 @@
 from typing import List, Dict
-import openai
+from dotenv import load_dotenv
+from openai import OpenAI
 import os
 
-client = openai.OpenAI(api_key=os.getenv("API_KEY"))
+
+load_dotenv()
+
+
+client = OpenAI(
+  api_key=os.environ['OPENAI_API_KEY'],  # this is also the default, it can be omitted
+)
 
 def optimize_token_usage(messages: List[str]) -> List[str]:
-   
     unique_messages = list(dict.fromkeys(messages))
     return unique_messages
 
 def generate_summary(conversation_id: str, messages: List[str]) -> Dict:
-
     optimized_messages = optimize_token_usage(messages)
+    conversation_text = " ".join(optimized_messages)
     prompt = (
         "Te voy a proporcionar una conversación donde una persona busca ayuda. "
         "Tu tarea es responder de manera cálida, empática y amigable, asegurándote de transmitir cercanía y apoyo. "
         "Evita sonar robótico o demasiado formal. Imagina que eres un asistente realmente interesado en ayudar.\n\n"
         "Aquí está la conversación:\n"
-        f"{optimized_messages}\n\n"
+        f"{conversation_text}\n\n"
         "Responde de manera natural y servicial, como si estuvieras hablando con alguien que necesita orientación. "
         "Por ejemplo, podrías decir algo como:\n"
         "'¡Hola! 😊 Entiendo lo frustrante que esto puede ser, pero no te preocupes, estoy aquí para ayudarte. "
         "Cuéntame un poco más sobre lo que sucede y juntos encontraremos una solución.'\n\n"
         "Recuerda mantener un tono humano, cálido y cercano en tu respuesta."
     )
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}],
+    response = client.completions.create(
+        model="gpt-4",
+        prompt=prompt,
         max_tokens=100
     )
-    summary = response.choices[0].message.content
+    summary = response.choices[0].text.strip()
     
     return {
         "conversation_id": conversation_id,

@@ -15,7 +15,6 @@ from nlp.topic_modeling import extract_topics
 from nlp.summarization import generate_summary
 
 load_dotenv()
-openai.api_key = os.getenv("API_KEY")
 app = FastAPI()
 origins = [
     "http://localhost:4200",
