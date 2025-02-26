@@ -1,15 +1,12 @@
 from typing import List, Dict
 from dotenv import load_dotenv
-from openai import OpenAI
+import openai
 import os
 
 
 load_dotenv()
+apenai.api_key = os.getenv("OPENAI_API_KEY")
 
-
-client = OpenAI(
-  api_key=os.environ['OPENAI_API_KEY'],  # this is also the default, it can be omitted
-)
 
 def optimize_token_usage(messages: List[str]) -> List[str]:
     unique_messages = list(dict.fromkeys(messages))
@@ -30,7 +27,7 @@ def generate_summary(conversation_id: str, messages: List[str]) -> Dict:
         "Cuéntame un poco más sobre lo que sucede y juntos encontraremos una solución.'\n\n"
         "Recuerda mantener un tono humano, cálido y cercano en tu respuesta."
     )
-    response = client.completions.create(
+    response = openai.Chatcompletions.create(
         model="gpt-4",
         prompt=prompt,
         max_tokens=100
