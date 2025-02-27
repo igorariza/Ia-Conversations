@@ -49,6 +49,14 @@ chat-nlp-microservice
 
 4. **Set up environment variables:**
    Create a `.env` file in the root directory and add necessary configuration settings and API keys.
+   EXAMPLE:
+   ```
+   OPENAI_API_KEY= <API_KEY>
+   REDIS_URL=redis://localhost:6379
+   GPT_MODEL=gpt-4
+   TOKEN_LIMIT=4096
+   DEBUG=True
+   ```
 
 ## Usage
 
