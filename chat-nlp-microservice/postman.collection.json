@@ -1,0 +1,41 @@
+{
+    "info": {
+      "name": "Chat NLP Microservice",
+      "_postman_id": "12345678-1234-1234-1234-123456789012",
+      "description": "",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Process Conversation",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"conversation_id\": \"\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"text\": \"Hola, necesito ayuda con mi pago\",\n            \"timestamp\": \"2025-02-19T10:00:00Z\"\n        }\n    ]\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/process_conversation/",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "8000",
+            "path": [
+              "process_conversation"
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }

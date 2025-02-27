@@ -1,51 +1,47 @@
-from typing import List, Dict
 from textblob import TextBlob
 
+def analyze_sentiment(messages):
+    sentiment_results = []
+    total_sentiment = 0
+    negative_messages = []
 
-def analyze_sentiment(messages: List[str]) -> List[dict]:
-    results = []
     for message in messages:
-        blob = TextBlob(message)
-        sentiment = blob.sentiment.polarity
-        results.append({
-            "message": message,
-            "sentiment": "positive" if sentiment > 0 else "negative" if sentiment < 0 else "neutral",
-            "score": sentiment
+        analysis = TextBlob(message['text'])
+        sentiment_score = analysis.sentiment.polarity
+        sentiment = "neutral"
+
+        if sentiment_score > 0:
+            sentiment = "positive"
+        elif sentiment_score < 0:
+            sentiment = "negative"
+            negative_messages.append(message['text'])
+
+        sentiment_results.append({
+            "message": message['text'],
+            "sentiment": sentiment,
+            "score": sentiment_score
         })
-    return results
-# from textblob import TextBlob
+        total_sentiment += sentiment_score
 
-# def analyze_sentiment(messages):
-#     sentiment_results = []
-#     total_sentiment = 0
-#     negative_messages = []
+    average_sentiment = "neutral"
+    if total_sentiment > 0:
+        average_sentiment = "positive"
+    elif total_sentiment < 0:
+        average_sentiment = "negative"
 
+    return {
+        "sentiment_analysis": sentiment_results,
+        "average_sentiment": average_sentiment,
+        "high_negative_messages": negative_messages
+    }
+# def analyze_sentiment(messages: List[str]) -> List[dict]:
+#     results = []
 #     for message in messages:
-#         analysis = TextBlob(message['text'])
-#         sentiment_score = analysis.sentiment.polarity
-#         sentiment = "neutral"
-
-#         if sentiment_score > 0:
-#             sentiment = "positive"
-#         elif sentiment_score < 0:
-#             sentiment = "negative"
-#             negative_messages.append(message['text'])
-
-#         sentiment_results.append({
-#             "message": message['text'],
-#             "sentiment": sentiment,
-#             "score": sentiment_score
+#         blob = TextBlob(message)
+#         sentiment = blob.sentiment.polarity
+#         results.append({
+#             "message": message,
+#             "sentiment": "positive" if sentiment > 0 else "negative" if sentiment < 0 else "neutral",
+#             "score": sentiment
 #         })
-#         total_sentiment += sentiment_score
-
-#     average_sentiment = "neutral"
-#     if total_sentiment > 0:
-#         average_sentiment = "positive"
-#     elif total_sentiment < 0:
-#         average_sentiment = "negative"
-
-#     return {
-#         "sentiment_analysis": sentiment_results,
-#         "average_sentiment": average_sentiment,
-#         "high_negative_messages": negative_messages
-#     }
+#     return results
