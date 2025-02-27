@@ -102,6 +102,15 @@ The service will start and listen for incoming requests.
    }
   ````
   - **Response**: JSON with analysis results.
+   ````
+    {
+      "conversation_id": "",
+      "sentiment": "positive",
+      "intent": "joke",
+      "topics": ["chiste"],
+      "summary": "El chiste es el siguiente: ..."
+    }
+   ````
 
 ## Testing
 
