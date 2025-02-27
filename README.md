@@ -32,7 +32,7 @@ chat-nlp-microservice
 
 1. **Clone the repository:**
    ```
-   git clone <repository-url>
+   git clone https://github.com/igorariza/Ia-Conversations.git
    cd chat-nlp-microservice
    ```
 
@@ -87,8 +87,20 @@ The service will start and listen for incoming requests.
 
 ## API Endpoints
 
-- **POST /analyze**: Analyzes a chat conversation for sentiment, intent, topics, and generates a summary.
+- **POST /process_conversation/**: Analyzes a chat conversation for sentiment, intent, topics, and generates a summary.
   - **Request Body**: JSON containing the conversation history.
+  ````
+   {
+    "conversation_id": "",
+    "messages": [
+        {
+            "role": "user",
+            "text": "Hola, necesito ayuda con mi pago",
+            "timestamp": "2025-02-19T10:00:00Z"
+        }
+    ]
+   }
+  ````
   - **Response**: JSON with analysis results.
 
 ## Testing
