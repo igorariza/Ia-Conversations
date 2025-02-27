@@ -95,7 +95,7 @@ The service will start and listen for incoming requests.
     "messages": [
         {
             "role": "user",
-            "text": "Hola, necesito ayuda con mi pago",
+            "text": "Hola, cuentame un chiste",
             "timestamp": "2025-02-19T10:00:00Z"
         }
     ]
