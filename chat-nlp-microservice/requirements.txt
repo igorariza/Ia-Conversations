@@ -12,4 +12,4 @@ uvicorn
 pytest
 textblob
 openai==0.28.0
-dotenv
+python-dotenv
