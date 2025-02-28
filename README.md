@@ -60,6 +60,18 @@ chat-nlp-microservice
 
 ## Usage
 
+## Docker recommended
+
+To build and run the Docker container, use the following commands:
+
+```
+colima start 
+docker build -t chat-nlp-microservice .
+docker run -p 8000:8000 chat-nlp-microservice
+```
+
+## Local
+
 To run the microservice, execute the following command:
 
 ```
@@ -118,15 +130,6 @@ To run the unit tests, use the following command:
 
 ```
 pytest src/tests
-```
-
-## Docker
-
-To build and run the Docker container, use the following commands:
-
-```
-docker build -t chat-nlp-microservice .
-docker run -p 8000:8000 chat-nlp-microservice
 ```
 
 ## Contributing
