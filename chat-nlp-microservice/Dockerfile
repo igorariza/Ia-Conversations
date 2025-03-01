@@ -7,7 +7,7 @@ WORKDIR /app
 COPY requirements.txt .
 COPY .env .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY src/ .
 

@@ -1,5 +1,4 @@
 import sys
-import openai
 from dotenv import load_dotenv
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -15,7 +14,6 @@ from nlp.topic_modeling import extract_topics
 from nlp.summarization import generate_summary
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
 app = FastAPI()
 origins = [
     "http://localhost:4200",

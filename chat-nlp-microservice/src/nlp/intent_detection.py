@@ -1,7 +1,6 @@
 from typing import List
 import spacy
 
-# Load the spaCy model for intent detection
 nlp = spacy.load("en_core_web_sm")
 
 def detect_intent(messages: List[str]) -> List[str]:
