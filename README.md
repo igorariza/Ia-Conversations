@@ -119,8 +119,8 @@ The service will start and listen for incoming requests.
       "conversation_id": "",
       "sentiment": "positive",
       "intent": "joke",
-      "topics": ["chiste"],
-      "summary": "El chiste es el siguiente: ..."
+      "topics": ["jokes"],
+      "summary": "Here is a joke: Why did the scarecrow win an award? Because he was outstanding in his field!"
     }
    ````
 
