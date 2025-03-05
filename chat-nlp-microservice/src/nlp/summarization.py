@@ -1,6 +1,6 @@
 from typing import List, Dict
 from dotenv import load_dotenv
-import openai
+import openai as apenai
 import os
 
 
@@ -27,12 +27,14 @@ def generate_summary(conversation_id: str, messages: List[str]) -> Dict:
         "Cuéntame un poco más sobre lo que sucede y juntos encontraremos una solución.'\n\n"
         "Recuerda mantener un tono humano, cálido y cercano en tu respuesta."
     )
-    response = openai.Chatcompletions.create(
+    response = apenai.ChatCompletion.create(
         model="gpt-4",
-        prompt=prompt,
-        max_tokens=100
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=100,
     )
-    summary = response.choices[0].text.strip()
+    summary = response.choices[0].message["content"]
     
     return {
         "conversation_id": conversation_id,
