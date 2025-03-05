@@ -65,7 +65,7 @@ chat-nlp-microservice
 To build and run the Docker container, use the following commands:
 
 ```
-colima start 
+colima start / docker start
 docker build -t chat-nlp-microservice .
 docker run -p 8000:8000 chat-nlp-microservice
 ```
