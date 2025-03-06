@@ -16,6 +16,7 @@ def generate_summary(conversation_id: str, messages: List[str]) -> Dict:
     optimized_messages = optimize_token_usage(messages)
     conversation_text = " ".join(optimized_messages)
     prompt = (
+        "Responder en el mismo idioma en el que se escribió el mensaje original.\n"
         "Te voy a proporcionar una conversación donde una persona busca ayuda. "
         "Tu tarea es responder de manera cálida, empática y amigable, asegurándote de transmitir cercanía y apoyo. "
         "Evita sonar robótico o demasiado formal. Imagina que eres un asistente realmente interesado en ayudar.\n\n"
@@ -25,11 +26,12 @@ def generate_summary(conversation_id: str, messages: List[str]) -> Dict:
         "Por ejemplo, podrías decir algo como:\n"
         "'¡Hola! 😊 Entiendo lo frustrante que esto puede ser, pero no te preocupes, estoy aquí para ayudarte. "
         "Cuéntame un poco más sobre lo que sucede y juntos encontraremos una solución.'\n\n"
-        "Recuerda mantener un tono humano, cálido y cercano en tu respuesta."
+        "Recuerda mantener un tono humano, cálido y cercano en tu respuesta. "
     )
     response = apenai.ChatCompletion.create(
         model="gpt-4",
         messages=[
+            {"role": "system", "content": f"El usuario habla en el idioma de este mensaje: {conversation_text}."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=100,
